@@ -109,7 +109,7 @@ WSGI_APPLICATION = 'self_care.wsgi.application'
 
 DATABASES = {
     'default':
-    dj_database_url.parse(os.environ.get("CLEARDB_DATABASE_URL"))
+    dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 
