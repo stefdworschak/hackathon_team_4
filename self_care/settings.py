@@ -37,10 +37,9 @@ development = os.environ.get('DEVELOPMENT', False)
 DEBUG = development
 
 if development:
-    ALLOWED_HOSTS = ['localhost', '127.0.0.1', '127.0.0.1:8000',
-    'self-care-app-hackathon.herokuapp.com']
+    ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST')]
 else:
-    ALLOWED_HOSTS = ["self-care-app-hackathon.herokuapp.com"]
+    ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST')]
 
 
 # Application definition
@@ -110,7 +109,7 @@ WSGI_APPLICATION = 'self_care.wsgi.application'
 
 DATABASES = {
     'default':
-    dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    dj_database_url.parse(os.environ.get("CLEARDB_DATABASE_URL"))
 }
 
 
@@ -150,7 +149,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-
+CLOUDINARY_URL = os.environ.get('CLOUDINARY_URL')
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
